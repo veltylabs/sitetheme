@@ -14,9 +14,9 @@ func LLMsTxt(c sitecontent.Content) string {
 		b.WriteString("\n\n")
 	}
 
-	if c.SEO.Description != "" {
+	if c.Seo.Description != "" {
 		b.WriteString("> ")
-		b.WriteString(c.SEO.Description)
+		b.WriteString(c.Seo.Description)
 		b.WriteString("\n\n")
 	}
 
@@ -50,13 +50,17 @@ func LLMsTxt(c sitecontent.Content) string {
 				b.WriteString(svc.Description)
 				b.WriteString("\n")
 			}
+			if svc.Body != "" {
+				b.WriteString(svc.Body)
+				b.WriteString("\n")
+			}
 			b.WriteString("\n")
 		}
 	}
 
-	if len(c.Hours.Schedules) > 0 {
+	if len(c.Hours) > 0 {
 		b.WriteString("## Horarios de Atención\n\n")
-		for _, sch := range c.Hours.Schedules {
+		for _, sch := range c.Hours {
 			b.WriteString("- ")
 			b.WriteString(sch.Days)
 			b.WriteString(": ")

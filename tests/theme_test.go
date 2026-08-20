@@ -11,84 +11,61 @@ import (
 
 func sampleContent() sitecontent.Content {
 	return sitecontent.Content{
+		SiteId: "site-123",
 		Brand: sitecontent.Brand{
-			Name: "Clínica San José",
-			WideLogo: sitecontent.ImageRef{
-				Key: "logo-wide.webp",
-				Alt: "Logo Ancho",
-			},
-			CompactLogo: sitecontent.ImageRef{
-				Key: "logo-compact.webp",
-				Alt: "Logo Compacto",
-			},
-			LogoAlt: "Clínica San José Logo",
-			Href:    "/",
+			Name:        "Clínica San José",
+			WideLogo:    "logo-wide.webp",
+			CompactLogo: "logo-compact.webp",
+			LogoAlt:     "Clínica San José Logo",
 		},
 		Contact: sitecontent.Contact{
 			Phone:   "+56 9 1234 5678",
 			Email:   "contacto@clinicasanjose.cl",
 			Address: "Av. Libertad 123, Chillán",
-			Hours:   "08:00 - 20:00",
 		},
 		Hero: sitecontent.Hero{
 			Title:    "Cuidamos tu salud y la de tu familia",
 			Subtitle: "Atención médica integral con profesionales altamente calificados.",
-			CTAs: []sitecontent.Link{
-				{Label: "Nuestros Servicios", Href: "#servicios"},
-				{Label: "Agendar Cita", Href: "#contacto"},
+			CtAs: []sitecontent.Link{
+				{Text: "Nuestros Servicios", Url: "#servicios"},
+				{Text: "Agendar Cita", Url: "#contacto"},
 			},
-			Slides: []sitecontent.ImageRef{
-				{Key: "hero-1.webp", Alt: "Instalaciones"},
+			Images: []sitecontent.ImageItem{
+				{Key: "hero-1.webp"},
 			},
 		},
 		About: sitecontent.About{
 			Title: "Más de 20 años de experiencia",
-			Image: sitecontent.ImageRef{
-				Key: "nosotros.webp",
-				Alt: "Equipo médico",
-			},
-			Paragraphs: []string{
-				"Somos un centro médico comprometido con la excelencia.",
-				"Contamos con infraestructura moderna y un equipo dedicado.",
-			},
+			Image: "nosotros.webp",
+			Body:  "Somos un centro médico comprometido con la excelencia.",
 		},
 		Services: []sitecontent.Service{
 			{
 				Title:       "Medicina General",
 				Description: "Atención primaria para todas las edades.",
 				Slug:        "medicina-general",
-				Image:       sitecontent.ImageRef{Key: "medicina-general.webp", Alt: "Medicina General"},
-				Badge:       "Popular",
-				LinkLabel:   "Ver detalles",
+				Image:       "medicina-general.webp",
 			},
 			{
 				Title:       "Pediatría",
 				Description: "Cuidado especializado para los más pequeños.",
 				Slug:        "pediatria",
-				Image:       sitecontent.ImageRef{Key: "pediatria.webp", Alt: "Pediatría"},
-				Badge:       "Infantil",
-				LinkLabel:   "Ver detalles",
+				Image:       "pediatria.webp",
 			},
 		},
 		Stats: []sitecontent.Stat{
 			{Value: "+10.000", Label: "Pacientes atendidos"},
 			{Value: "15", Label: "Especialidades médicas"},
 		},
-		Hours: sitecontent.Hours{
-			Title: "Horarios de Atención",
-			Schedules: []sitecontent.Schedule{
-				{Days: "Lunes a Viernes", Hours: "08:00 - 20:00"},
-				{Days: "Sábados", Hours: "09:00 - 14:00"},
-			},
+		Hours: []sitecontent.Schedule{
+			{Days: "Lunes a Viernes", Hours: "08:00 - 20:00"},
+			{Days: "Sábados", Hours: "09:00 - 14:00"},
 		},
 		Map: sitecontent.Map{
-			Title: "Nuestra Ubicación",
-			URL:   "https://maps.google.com/embed?pb=123",
+			EmbedUrl: "https://maps.google.com/embed?pb=123",
 		},
-		SEO: sitecontent.SEO{
-			Domain:      "clinicasanjose.cl",
+		Seo: sitecontent.SEO{
 			SchemaType:  "MedicalClinic",
-			Title:       "Clínica San José — Atención Médica en Chillán",
 			Description: "Centro médico integral en Chillán. Agende su hora en línea.",
 		},
 	}
@@ -197,7 +174,7 @@ func TestCase5_EmptyServicesOmitted(t *testing.T) {
 // Case 6: descripción con ", \ y salto de línea -> JSON-LD válido
 func TestCase6_JSONLDComplexEscaping(t *testing.T) {
 	c := sampleContent()
-	c.SEO.Description = "Atención con \"comillas\", \\barra invertida\\ y\nsalto de línea."
+	c.Seo.Description = "Atención con \"comillas\", \\barra invertida\\ y\nsalto de línea."
 
 	jsonldStr := sitetheme.JSONLD(c)
 
@@ -211,7 +188,7 @@ func TestCase6_JSONLDComplexEscaping(t *testing.T) {
 // Case 7: ImageRef.Key = foto.webp -> /img/foto.webp sin dominio
 func TestCase7_ImageRelativePath(t *testing.T) {
 	c := sampleContent()
-	c.About.Image = sitecontent.ImageRef{Key: "foto.webp", Alt: "Foto"}
+	c.About.Image = "foto.webp"
 
 	page := sitetheme.Landing(c)
 	pages := page.RenderPages()

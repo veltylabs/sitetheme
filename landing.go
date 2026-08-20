@@ -12,13 +12,13 @@ func Landing(c sitecontent.Content) *landing.Page {
 	brand := landing.Brand{
 		Name:    c.Brand.Name,
 		LogoAlt: c.Brand.LogoAlt,
-		Href:    c.Brand.Href,
+		Href:    "/",
 	}
-	if c.Brand.WideLogo.Key != "" {
-		brand.WideLogoSrc = ImagePathPrefix + c.Brand.WideLogo.Key
+	if c.Brand.WideLogo != "" {
+		brand.WideLogoSrc = ImagePathPrefix + c.Brand.WideLogo
 	}
-	if c.Brand.CompactLogo.Key != "" {
-		brand.CompactLogoSrc = ImagePathPrefix + c.Brand.CompactLogo.Key
+	if c.Brand.CompactLogo != "" {
+		brand.CompactLogoSrc = ImagePathPrefix + c.Brand.CompactLogo
 	}
 
 	// 2. Convert Contact
@@ -26,16 +26,15 @@ func Landing(c sitecontent.Content) *landing.Page {
 		Phone:   c.Contact.Phone,
 		Email:   c.Contact.Email,
 		Address: c.Contact.Address,
-		Hours:   c.Contact.Hours,
 	}
 
 	// Build menu based on present sections
 	var menu []landing.Link
 
-	if c.Hero.Title != "" || c.Hero.Subtitle != "" || len(c.Hero.CTAs) > 0 || len(c.Hero.Slides) > 0 {
+	if c.Hero.Title != "" || c.Hero.Subtitle != "" || len(c.Hero.CtAs) > 0 || len(c.Hero.Images) > 0 {
 		menu = append(menu, landing.Link{Label: NavLabelHero, Href: "#" + AnchorHero})
 	}
-	if c.About.Title != "" || len(c.About.Paragraphs) > 0 || c.About.Image.Key != "" {
+	if c.About.Title != "" || c.About.Body != "" || c.About.Mission != "" || c.About.Vision != "" || c.About.Image != "" {
 		menu = append(menu, landing.Link{Label: NavLabelAbout, Href: "#" + AnchorAbout})
 	}
 	if len(c.Services) > 0 {
@@ -45,10 +44,10 @@ func Landing(c sitecontent.Content) *landing.Page {
 		menu = append(menu, landing.Link{Label: NavLabelStats, Href: "#" + AnchorStats})
 	}
 	menu = append(menu, landing.Link{Label: NavLabelForm, Href: "#" + AnchorForm})
-	if c.Hours.Title != "" || len(c.Hours.Schedules) > 0 {
+	if len(c.Hours) > 0 {
 		menu = append(menu, landing.Link{Label: NavLabelHours, Href: "#" + AnchorHours})
 	}
-	if c.Map.Title != "" || c.Map.URL != "" {
+	if c.Map.EmbedUrl != "" {
 		menu = append(menu, landing.Link{Label: NavLabelMap, Href: "#" + AnchorMap})
 	}
 
@@ -56,7 +55,7 @@ func Landing(c sitecontent.Content) *landing.Page {
 	var sections []*landing.Section
 
 	// 1. InfoBar
-	if c.Contact.Phone != "" || c.Contact.Email != "" || c.Contact.Address != "" || c.Contact.Hours != "" {
+	if c.Contact.Phone != "" || c.Contact.Email != "" || c.Contact.Address != "" {
 		sections = append(sections, landing.InfoBar(contact))
 	}
 
@@ -64,16 +63,16 @@ func Landing(c sitecontent.Content) *landing.Page {
 	sections = append(sections, landing.Header(menu...))
 
 	// 3. Hero
-	if c.Hero.Title != "" || c.Hero.Subtitle != "" || len(c.Hero.CTAs) > 0 || len(c.Hero.Slides) > 0 {
+	if c.Hero.Title != "" || c.Hero.Subtitle != "" || len(c.Hero.CtAs) > 0 || len(c.Hero.Images) > 0 {
 		var ctas []landing.Link
-		for _, cta := range c.Hero.CTAs {
+		for _, cta := range c.Hero.CtAs {
 			ctas = append(ctas, landing.Link{
-				Label: cta.Label,
-				Href:  cta.Href,
+				Label: cta.Text,
+				Href:  cta.Url,
 			})
 		}
 		var slides []landing.Slide
-		for _, s := range c.Hero.Slides {
+		for _, s := range c.Hero.Images {
 			if s.Key != "" {
 				slides = append(slides, landing.Slide{
 					Image: ImagePathPrefix + s.Key,
@@ -85,12 +84,22 @@ func Landing(c sitecontent.Content) *landing.Page {
 	}
 
 	// 4. Split (About)
-	if c.About.Title != "" || len(c.About.Paragraphs) > 0 || c.About.Image.Key != "" {
+	if c.About.Title != "" || c.About.Body != "" || c.About.Mission != "" || c.About.Vision != "" || c.About.Image != "" {
 		imgSrc := ""
-		if c.About.Image.Key != "" {
-			imgSrc = ImagePathPrefix + c.About.Image.Key
+		if c.About.Image != "" {
+			imgSrc = ImagePathPrefix + c.About.Image
 		}
-		splitSec := landing.Split(c.About.Title, imgSrc, c.About.Paragraphs...).At(AnchorAbout)
+		var paragraphs []string
+		if c.About.Body != "" {
+			paragraphs = append(paragraphs, c.About.Body)
+		}
+		if c.About.Mission != "" {
+			paragraphs = append(paragraphs, c.About.Mission)
+		}
+		if c.About.Vision != "" {
+			paragraphs = append(paragraphs, c.About.Vision)
+		}
+		splitSec := landing.Split(c.About.Title, imgSrc, paragraphs...).At(AnchorAbout)
 		sections = append(sections, splitSec)
 	}
 
@@ -105,16 +114,14 @@ func Landing(c sitecontent.Content) *landing.Page {
 			}
 			href := fmt.Sprintf("%s%s/", ServicesPathPrefix, slug)
 			imgSrc := ""
-			if svc.Image.Key != "" {
-				imgSrc = ImagePathPrefix + svc.Image.Key
+			if svc.Image != "" {
+				imgSrc = ImagePathPrefix + svc.Image
 			}
 			cards = append(cards, landing.Card{
 				Title:       svc.Title,
 				Description: svc.Description,
 				Image:       imgSrc,
 				Href:        href,
-				Badge:       svc.Badge,
-				LinkLabel:   svc.LinkLabel,
 			})
 		}
 		cardsSec := landing.Cards(NavLabelServices, cards...).At(AnchorServices)
@@ -139,29 +146,21 @@ func Landing(c sitecontent.Content) *landing.Page {
 	sections = append(sections, formSec)
 
 	// 8. Hours
-	if c.Hours.Title != "" || len(c.Hours.Schedules) > 0 {
+	if len(c.Hours) > 0 {
 		var schedules []landing.Schedule
-		for _, sch := range c.Hours.Schedules {
+		for _, sch := range c.Hours {
 			schedules = append(schedules, landing.Schedule{
 				Days:  sch.Days,
 				Hours: sch.Hours,
 			})
 		}
-		hoursTitle := c.Hours.Title
-		if hoursTitle == "" {
-			hoursTitle = NavLabelHours
-		}
-		hoursSec := landing.Hours(hoursTitle, contact, schedules...).At(AnchorHours)
+		hoursSec := landing.Hours(NavLabelHours, contact, schedules...).At(AnchorHours)
 		sections = append(sections, hoursSec)
 	}
 
 	// 9. Map
-	if c.Map.Title != "" || c.Map.URL != "" {
-		mapTitle := c.Map.Title
-		if mapTitle == "" {
-			mapTitle = NavLabelMap
-		}
-		mapSec := landing.MapEmbed(mapTitle, c.Map.URL).At(AnchorMap)
+	if c.Map.EmbedUrl != "" {
+		mapSec := landing.MapEmbed(NavLabelMap, c.Map.EmbedUrl).At(AnchorMap)
 		sections = append(sections, mapSec)
 	}
 
@@ -172,16 +171,13 @@ func Landing(c sitecontent.Content) *landing.Page {
 	page := landing.New(brand, sections...)
 
 	// SEO metadata for root page
-	var canonical string
-	if c.SEO.Domain != "" {
-		canonical = fmt.Sprintf("https://%s/", c.SEO.Domain)
-	}
-
 	docOpts := html.DocumentOptions{
-		Title:       c.SEO.Title,
-		Description: c.SEO.Description,
+		Title:       c.Brand.Name,
+		Description: c.Seo.Description,
 		JSONLD:      JSONLD(c),
-		Canonical:   canonical,
+	}
+	if c.Seo.SocialImage != "" {
+		docOpts.Image = ImagePathPrefix + c.Seo.SocialImage
 	}
 
 	page.WithSEO(docOpts)

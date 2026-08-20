@@ -16,7 +16,7 @@ func jsonString(s string) string {
 func JSONLD(c sitecontent.Content) string {
 	b := fmt.GetConv()
 
-	schemaType := c.SEO.SchemaType
+	schemaType := c.Seo.SchemaType
 	if schemaType == "" {
 		schemaType = "LocalBusiness"
 	}
@@ -40,22 +40,17 @@ func JSONLD(c sitecontent.Content) string {
 		b.WriteString(jsonString(c.Contact.Email))
 	}
 
-	if c.SEO.Description != "" {
+	if c.Seo.Description != "" {
 		b.WriteString(",\n  \"description\": ")
-		b.WriteString(jsonString(c.SEO.Description))
+		b.WriteString(jsonString(c.Seo.Description))
 	}
 
-	if c.SEO.Domain != "" {
-		b.WriteString(",\n  \"url\": ")
-		b.WriteString(jsonString("https://" + c.SEO.Domain + "/"))
-
-		if c.Brand.WideLogo.Key != "" {
-			b.WriteString(",\n  \"image\": ")
-			b.WriteString(jsonString("https://" + c.SEO.Domain + ImagePathPrefix + c.Brand.WideLogo.Key))
-		} else if c.Brand.CompactLogo.Key != "" {
-			b.WriteString(",\n  \"image\": ")
-			b.WriteString(jsonString("https://" + c.SEO.Domain + ImagePathPrefix + c.Brand.CompactLogo.Key))
-		}
+	if c.Brand.WideLogo != "" {
+		b.WriteString(",\n  \"image\": ")
+		b.WriteString(jsonString(ImagePathPrefix + c.Brand.WideLogo))
+	} else if c.Brand.CompactLogo != "" {
+		b.WriteString(",\n  \"image\": ")
+		b.WriteString(jsonString(ImagePathPrefix + c.Brand.CompactLogo))
 	}
 
 	if c.Contact.Address != "" {
@@ -66,9 +61,9 @@ func JSONLD(c sitecontent.Content) string {
 		b.WriteString("\n  }")
 	}
 
-	if len(c.Hours.Schedules) > 0 {
+	if len(c.Hours) > 0 {
 		b.WriteString(",\n  \"openingHoursSpecification\": [\n")
-		for i, sch := range c.Hours.Schedules {
+		for i, sch := range c.Hours {
 			if i > 0 {
 				b.WriteString(",\n")
 			}

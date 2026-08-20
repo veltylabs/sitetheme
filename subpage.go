@@ -16,29 +16,28 @@ func buildSubPage(svc sitecontent.Service, c sitecontent.Content) landing.SubPag
 
 	path := fmt.Sprintf("%s%s/", ServicesPathPrefix, slug)
 
-	var canonical string
-	if c.SEO.Domain != "" {
-		canonical = fmt.Sprintf("https://%s%s", c.SEO.Domain, path)
-	}
-
 	doc := html.DocumentOptions{
 		Title:       svc.Title,
 		Description: svc.Description,
 		JSONLD:      JSONLD(c),
-		Canonical:   canonical,
 	}
 
-	if svc.Image.Key != "" {
-		doc.Image = ImagePathPrefix + svc.Image.Key
+	if svc.Image != "" {
+		doc.Image = ImagePathPrefix + svc.Image
 	}
 
 	imgSrc := ""
-	if svc.Image.Key != "" {
-		imgSrc = ImagePathPrefix + svc.Image.Key
+	if svc.Image != "" {
+		imgSrc = ImagePathPrefix + svc.Image
+	}
+
+	pText := svc.Description
+	if svc.Body != "" {
+		pText = svc.Body
 	}
 
 	var sections []*landing.Section
-	splitSec := landing.Split(svc.Title, imgSrc, svc.Description)
+	splitSec := landing.Split(svc.Title, imgSrc, pText)
 	sections = append(sections, splitSec)
 
 	return landing.SubPage{
