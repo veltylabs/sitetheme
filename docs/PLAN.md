@@ -3,6 +3,8 @@ PLAN: "feat: mapeo de contenido a la plantilla landing con JSON-LD y llms.txt"
 TAG: v0.1.0
 EXECUTOR: jules
 REVIEWER: none
+STATUS: running
+SESSION: 2203076454838285662
 ---
 
 > Este plan se despacha con el flujo CodeJob. Ver skill: agents-workflow.
