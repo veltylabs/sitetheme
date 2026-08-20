@@ -3,8 +3,9 @@ PLAN: "feat: mapeo de contenido a la plantilla landing con JSON-LD y llms.txt"
 TAG: v0.1.0
 EXECUTOR: jules
 REVIEWER: none
-STATUS: running
+STATUS: review
 SESSION: 2203076454838285662
+PR: https://github.com/veltylabs/sitetheme/pull/1
 ---
 
 > Este plan se despacha con el flujo CodeJob. Ver skill: agents-workflow.
@@ -84,7 +85,7 @@ líneas, tests bajo `tests/`.
 ```go
 // Landing arma la pagina del sitio a partir de su contenido.
 // La composicion es FIJA: el orden de secciones no depende del contenido.
-func Landing(c sitecontent.Content) *landing.Page
+func Landing(c sitecontent.Content, domain string) *landing.Page
 
 // JSONLD produce el documento schema.org del rubro declarado en c.SEO.
 func JSONLD(c sitecontent.Content) string
@@ -94,6 +95,13 @@ func LLMsTxt(c sitecontent.Content) string
 ```
 
 Nada más se exporta en v1.
+
+> **Desviación respecto a la versión original de este plan:** `Landing` recibe
+> `domain` como segundo parámetro. El plan original asumía `c.SEO.Domain`,
+> pero ese campo no existe en el `site_content` v0.1.0 publicado. `domain` es
+> un dato de infraestructura (qué dominio sirve este sitio), no contenido que
+> el cliente edita, así que se pasa explícito en vez de inventarse en
+> `site_content` — mantiene `Landing` pura (mismos argumentos, mismos bytes).
 
 ---
 
