@@ -3,8 +3,9 @@ PLAN: "feat: mapeo de contenido a la plantilla landing con JSON-LD y llms.txt"
 TAG: v0.1.0
 EXECUTOR: jules
 REVIEWER: none
-STATUS: running
+STATUS: review
 SESSION: 2203076454838285662
+PR: https://github.com/veltylabs/sitetheme/pull/1
 ---
 
 > Este plan se despacha con el flujo CodeJob. Ver skill: agents-workflow.
@@ -84,7 +85,7 @@ líneas, tests bajo `tests/`.
 ```go
 // Landing arma la pagina del sitio a partir de su contenido.
 // La composicion es FIJA: el orden de secciones no depende del contenido.
-func Landing(c sitecontent.Content) *landing.Page
+func Landing(c sitecontent.Content, domain string) *landing.Page
 
 // JSONLD produce el documento schema.org del rubro declarado en c.SEO.
 func JSONLD(c sitecontent.Content) string
@@ -94,6 +95,13 @@ func LLMsTxt(c sitecontent.Content) string
 ```
 
 Nada más se exporta en v1.
+
+> **Desviación respecto a la versión original de este plan:** `Landing` recibe
+> `domain` como segundo parámetro. El plan original asumía `c.SEO.Domain`,
+> pero ese campo no existe en el `site_content` v0.1.0 publicado. `domain` es
+> un dato de infraestructura (qué dominio sirve este sitio), no contenido que
+> el cliente edita, así que se pasa explícito en vez de inventarse en
+> `site_content` — mantiene `Landing` pura (mismos argumentos, mismos bytes).
 
 ---
 
@@ -256,17 +264,17 @@ El caso 3 verifica **que sí falle**. Es deliberado.
 
 ## 9. Criterios de aceptación
 
-- [ ] `go vet ./...` limpio; `go test ./tests/...` en verde con los 10 casos.
-- [ ] Compila para wasm: `GOOS=js GOARCH=wasm go build ./...` sin errores.
-- [ ] `grep -rn "encoding/json\|\"reflect\"\|\"strings\"\|\"errors\"\|\"strconv\"\|\"fmt\"\|\"log\"" --include=*.go . | grep -v _test.go` → vacío.
-- [ ] `grep -rn "map\[" --include=*.go . | grep -v _test.go` → vacío.
-- [ ] `grep -rn "time.Now\|rand\.\|os.Getenv\|http.Get" --include=*.go .` → vacío: **funciones puras**.
-- [ ] `grep -rn "^var [a-z].* = " --include=*.go . | grep -v "_test.go"` → sin estado global mutable.
-- [ ] `grep -rn "https://\|r2.dev" --include=*.go . | grep -v _test.go` → vacío: **las imágenes son rutas relativas**.
-- [ ] `grep -rn "recover()" --include=*.go . | grep -v _test.go` → vacío: **el pánico de `landing` no se captura**.
-- [ ] `grep -rn "internal/" .` → vacío.
-- [ ] `ls sitetheme.go` → no existe.
-- [ ] `grep -rn "subgraph" docs/` → vacío.
+- [x] `go vet ./...` limpio; `go test ./tests/...` en verde con los 10 casos.
+- [x] Compila para wasm: `GOOS=js GOARCH=wasm go build ./...` sin errores.
+- [x] `grep -rn "encoding/json\|\"reflect\"\|\"strings\"\|\"errors\"\|\"strconv\"\|\"fmt\"\|\"log\"" --include=*.go . | grep -v _test.go` → vacío.
+- [x] `grep -rn "map\[" --include=*.go . | grep -v _test.go` → vacío.
+- [x] `grep -rn "time.Now\|rand\.\|os.Getenv\|http.Get" --include=*.go .` → vacío: **funciones puras**.
+- [x] `grep -rn "^var [a-z].* = " --include=*.go . | grep -v "_test.go"` → sin estado global mutable.
+- [x] `grep -rn "https://\|r2.dev" --include=*.go . | grep -v _test.go` → vacío: **las imágenes son rutas relativas**.
+- [x] `grep -rn "recover()" --include=*.go . | grep -v _test.go` → vacío: **el pánico de `landing` no se captura**.
+- [x] `grep -rn "internal/" .` → vacío.
+- [x] `ls sitetheme.go` → no existe.
+- [x] `grep -rn "subgraph" docs/` → vacío.
 
 ## 10. Fuera de alcance
 
