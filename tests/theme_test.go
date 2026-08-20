@@ -74,7 +74,7 @@ func sampleContent() sitecontent.Content {
 // Case 1: contenido válido completo -> Landing().RenderPages()
 func TestCase1_CompleteValidContent(t *testing.T) {
 	c := sampleContent()
-	page := sitetheme.Landing(c)
+	page := sitetheme.Landing(c, "clinicasanjose.cl")
 	pages := page.RenderPages()
 
 	// Expected: 1 homepage ("/") and 1 for each service (2) = 3 total pages
@@ -93,12 +93,19 @@ func TestCase1_CompleteValidContent(t *testing.T) {
 	if pages[2].Path != "/servicios/pediatria/" {
 		t.Errorf("ruta esperada '/servicios/pediatria/', se obtuvo %s", pages[2].Path)
 	}
+
+	if pages[0].Doc.Canonical != "https://clinicasanjose.cl/" {
+		t.Errorf("canonical de la página principal esperado 'https://clinicasanjose.cl/', se obtuvo %s", pages[0].Doc.Canonical)
+	}
+	if pages[1].Doc.Canonical != "https://clinicasanjose.cl/servicios/medicina-general/" {
+		t.Errorf("canonical de subpágina esperado absoluto en el dominio, se obtuvo %s", pages[1].Doc.Canonical)
+	}
 }
 
 // Case 2: títulos y descripciones de las páginas todos distintos
 func TestCase2_DistinctTitlesAndDescriptions(t *testing.T) {
 	c := sampleContent()
-	page := sitetheme.Landing(c)
+	page := sitetheme.Landing(c, "clinicasanjose.cl")
 	pages := page.RenderPages()
 
 	titles := make([]string, 0, len(pages))
@@ -132,7 +139,7 @@ func TestCase3_DuplicateServiceDescriptionPanics(t *testing.T) {
 		}
 	}()
 
-	page := sitetheme.Landing(c)
+	page := sitetheme.Landing(c, "clinicasanjose.cl")
 	_ = page.RenderPages()
 }
 
@@ -141,7 +148,7 @@ func TestCase4_EmptyAboutOmitted(t *testing.T) {
 	c := sampleContent()
 	c.About = sitecontent.About{} // Empty About
 
-	page := sitetheme.Landing(c)
+	page := sitetheme.Landing(c, "clinicasanjose.cl")
 	pages := page.RenderPages()
 
 	body := pages[0].Body
@@ -158,7 +165,7 @@ func TestCase5_EmptyServicesOmitted(t *testing.T) {
 	c := sampleContent()
 	c.Services = nil // Empty Services
 
-	page := sitetheme.Landing(c)
+	page := sitetheme.Landing(c, "clinicasanjose.cl")
 	pages := page.RenderPages()
 
 	if len(pages) != 1 {
@@ -190,7 +197,7 @@ func TestCase7_ImageRelativePath(t *testing.T) {
 	c := sampleContent()
 	c.About.Image = "foto.webp"
 
-	page := sitetheme.Landing(c)
+	page := sitetheme.Landing(c, "clinicasanjose.cl")
 	pages := page.RenderPages()
 
 	body := pages[0].Body
@@ -206,10 +213,10 @@ func TestCase7_ImageRelativePath(t *testing.T) {
 func TestCase8_LandingPureFunction(t *testing.T) {
 	c := sampleContent()
 
-	page1 := sitetheme.Landing(c)
+	page1 := sitetheme.Landing(c, "clinicasanjose.cl")
 	pages1 := page1.RenderPages()
 
-	page2 := sitetheme.Landing(c)
+	page2 := sitetheme.Landing(c, "clinicasanjose.cl")
 	pages2 := page2.RenderPages()
 
 	if len(pages1) != len(pages2) {
@@ -243,7 +250,7 @@ func TestCase10_MinimalContent(t *testing.T) {
 		},
 	}
 
-	page := sitetheme.Landing(c)
+	page := sitetheme.Landing(c, "clinicasanjose.cl")
 	pages := page.RenderPages()
 
 	if len(pages) != 1 {

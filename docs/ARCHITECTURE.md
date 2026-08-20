@@ -65,3 +65,7 @@ Si una sección carece de datos en `Content`, la sección se omite y su ancla de
 ## Subpáginas
 
 Cada servicio declarado en `c.Services` genera una subpágina individual bajo la ruta `/servicios/<slug>/`. Cada subpágina cuenta con su título, descripción, canonical URL y bloque schema.org JSON-LD específico.
+
+## El parámetro `domain`
+
+`Landing(c sitecontent.Content, domain string)` recibe el dominio del sitio como segundo argumento, no como parte de `Content`. `site_content` v0.1.0 no tiene un campo de dominio: es un dato de infraestructura (qué sitio sirve este contenido), no contenido editable por el cliente, así que cada consumidor (`misitio`, `clientsites`) lo provee según su propia configuración. Con `domain == ""` no se emite `<link rel="canonical">` ni `og:url` — la función sigue siendo pura y no falla por su ausencia.

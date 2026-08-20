@@ -7,7 +7,11 @@ import (
 	"github.com/veltylabs/site_content"
 )
 
-func Landing(c sitecontent.Content) *landing.Page {
+// Landing arma la pagina del sitio a partir de su contenido. domain es el
+// dominio publico del sitio (sin esquema, ej. "clinicasanjose.cl"): no vive
+// en sitecontent.Content porque es un dato de infraestructura, no contenido
+// editable por el cliente, y se usa para construir los canonical URL.
+func Landing(c sitecontent.Content, domain string) *landing.Page {
 	// 1. Convert Brand
 	brand := landing.Brand{
 		Name:    c.Brand.Name,
@@ -179,12 +183,15 @@ func Landing(c sitecontent.Content) *landing.Page {
 	if c.Seo.SocialImage != "" {
 		docOpts.Image = ImagePathPrefix + c.Seo.SocialImage
 	}
+	if domain != "" {
+		docOpts.Canonical = "https://" + domain + "/"
+	}
 
 	page.WithSEO(docOpts)
 
 	// Add subpages for services
 	for _, svc := range c.Services {
-		subpage := buildSubPage(svc, c)
+		subpage := buildSubPage(svc, c, domain)
 		page.AddSubPage(subpage)
 	}
 

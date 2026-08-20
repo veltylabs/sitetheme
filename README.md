@@ -15,8 +15,11 @@ go get github.com/veltylabs/sitetheme
 `sitetheme` exporta tres funciones puras:
 
 ```go
-// Landing arma la página del sitio a partir de su contenido.
-func Landing(c sitecontent.Content) *landing.Page
+// Landing arma la página del sitio a partir de su contenido. domain es el
+// dominio público del sitio (sin esquema), usado para construir los
+// canonical URL; no vive en sitecontent.Content porque no es contenido
+// editable por el cliente.
+func Landing(c sitecontent.Content, domain string) *landing.Page
 
 // JSONLD produce el documento schema.org del rubro declarado en c.SEO.
 func JSONLD(c sitecontent.Content) string
@@ -39,10 +42,10 @@ import (
 func main() {
 	content := sitecontent.Content{
 		Brand: sitecontent.Brand{Name: "Mi Negocio"},
-		SEO:   sitecontent.SEO{Title: "Mi Negocio — Inicio", Description: "Bienvenido a Mi Negocio"},
+		Seo:   sitecontent.SEO{Description: "Bienvenido a Mi Negocio"},
 	}
 
-	page := sitetheme.Landing(content)
+	page := sitetheme.Landing(content, "minegocio.cl")
 	pages := page.RenderPages()
 
 	for _, p := range pages {

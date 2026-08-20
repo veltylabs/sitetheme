@@ -7,7 +7,7 @@ import (
 	"github.com/veltylabs/site_content"
 )
 
-func buildSubPage(svc sitecontent.Service, c sitecontent.Content) landing.SubPage {
+func buildSubPage(svc sitecontent.Service, c sitecontent.Content, domain string) landing.SubPage {
 	slug := svc.Slug
 	if slug == "" {
 		slug = fmt.ToLower(svc.Title)
@@ -20,6 +20,9 @@ func buildSubPage(svc sitecontent.Service, c sitecontent.Content) landing.SubPag
 		Title:       svc.Title,
 		Description: svc.Description,
 		JSONLD:      JSONLD(c),
+	}
+	if domain != "" {
+		doc.Canonical = "https://" + domain + path
 	}
 
 	if svc.Image != "" {
