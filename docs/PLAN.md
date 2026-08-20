@@ -7,7 +7,7 @@ REVIEWER: none
 
 > Este plan se despacha con el flujo CodeJob. Ver skill: agents-workflow.
 >
-> **PUERTA: no despachar hasta que `github.com/veltylabs/site_content` esté
+> **PUERTA: no despachar hasta que `github.com/veltylabs/site_content` v0.1.0 esté
 > publicado.** Este plan importa sus tipos; sin ellos no compila.
 
 # Plan — `veltylabs/sitetheme` v0.1.0
@@ -56,8 +56,8 @@ lectura de reloj, sin aleatoriedad, sin acceso a red ni a disco. La entrada es u
 
 ### 0.3 Este repositorio no valida ni autoriza
 
-Validar el contenido es trabajo de `veltylabs/site_content`; decidir quién puede
-editar es de `veltylabs/site_manager`. Aquí **sólo se dibuja**.
+Validar el contenido es trabajo de `veltylabs/site_content` v0.1.0; decidir quién puede
+editar es de `veltylabs/site_manager` v0.1.0. Aquí **sólo se dibuja**.
 
 Si un campo llega vacío, se omite la parte que lo usaría — **no** se inventa un
 valor por defecto y **no** se entra en pánico. El único pánico legítimo es el que
