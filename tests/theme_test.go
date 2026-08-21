@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/tinywasm/fmt"
+	"github.com/tinywasm/image"
 	"github.com/veltylabs/site_content"
 	"github.com/veltylabs/sitetheme"
 )
@@ -192,7 +193,13 @@ func TestCase6_JSONLDComplexEscaping(t *testing.T) {
 	}
 }
 
-// Case 7: ImageRef.Key = foto.webp -> /img/foto.webp sin dominio
+// Case 7: ImageRef.Key = foto.webp -> rutas relativas bajo /img/, sin dominio.
+//
+// landing sirve las imagenes de contenido con image.Responsive, asi que la
+// clave base no aparece tal cual: el src apunta a la variante M y el srcset
+// declara las tres. Los sufijos se leen de image.Variant para no volver a
+// duplicar la escalera aca — que es justo la duplicacion que tinywasm/image
+// centralizo en Variant.Suffix()/Width().
 func TestCase7_ImageRelativePath(t *testing.T) {
 	c := sampleContent()
 	c.About.Image = "foto.webp"
@@ -201,8 +208,11 @@ func TestCase7_ImageRelativePath(t *testing.T) {
 	pages := page.RenderPages()
 
 	body := pages[0].Body
-	if !fmt.Contains(body, "/img/foto.webp") {
-		t.Errorf("se esperaba la ruta de imagen '/img/foto.webp' en el cuerpo")
+	for _, v := range []image.Variant{image.VariantS, image.VariantM, image.VariantL} {
+		want := "/img/foto." + v.Suffix() + ".webp"
+		if !fmt.Contains(body, want) {
+			t.Errorf("se esperaba la ruta de imagen %q en el cuerpo", want)
+		}
 	}
 	if fmt.Contains(body, "https://r2.dev") || fmt.Contains(body, "r2.dev") {
 		t.Errorf("no deben emitirse URLs absolutas de R2")
