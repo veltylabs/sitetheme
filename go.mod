@@ -3,10 +3,11 @@ module github.com/veltylabs/sitetheme
 go 1.25.2
 
 require (
-	github.com/tinywasm/fmt v0.25.6
+	github.com/tinywasm/fmt v0.25.7
 	github.com/tinywasm/html v0.0.18
+	github.com/tinywasm/image v0.0.26
 	github.com/tinywasm/layout v0.1.38
-	github.com/veltylabs/site_content v0.1.0
+	github.com/veltylabs/site_content v0.2.3
 )
 
 require (
@@ -18,12 +19,12 @@ require (
 	github.com/tinywasm/dom v0.13.5 // indirect
 	github.com/tinywasm/fetch v0.1.24 // indirect
 	github.com/tinywasm/font v0.0.4 // indirect
-	github.com/tinywasm/image v0.0.26 // indirect
+	github.com/tinywasm/input v0.0.4 // indirect
 	github.com/tinywasm/js v0.0.6 // indirect
-	github.com/tinywasm/json v0.5.19 // indirect
+	github.com/tinywasm/json v0.5.23 // indirect
 	github.com/tinywasm/model v0.1.5 // indirect
-	github.com/tinywasm/orm v0.11.7 // indirect
-	github.com/tinywasm/router v0.1.23 // indirect
+	github.com/tinywasm/orm v0.11.10 // indirect
+	github.com/tinywasm/router v0.1.27 // indirect
 	github.com/tinywasm/storage v0.0.4 // indirect
 	github.com/tinywasm/svg v0.2.0 // indirect
 	github.com/tinywasm/widget v0.6.12 // indirect
