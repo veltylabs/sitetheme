@@ -6,7 +6,7 @@ Guía obligatoria para cualquier agente (o persona) que trabaje en este repo.
 
 El **tema** de los sitios de cliente de Velty: mapea el contenido editable
 (`veltylabs/site_content`) a una plantilla concreta
-(`github.com/tinywasm/layout/landing`) y produce los artefactos de SEO/GEO que
+(`github.com/webtyp/layout/landing`) y produce los artefactos de SEO/GEO que
 dependen del negocio — JSON-LD y `llms.txt`.
 
 Lo consumen **dos** lados, y esa es toda su razón de ser:
@@ -71,6 +71,6 @@ comentarios de prosa y etiquetas de diagramas, en español.
 | Librería | Rol |
 |---|---|
 | `github.com/veltylabs/site_content` | el contenido de entrada |
-| `github.com/tinywasm/layout/landing` | la plantilla de salida |
-| `github.com/tinywasm/html` | `Page`, `DocumentOptions` (incluye el campo `JSONLD`) |
-| `github.com/tinywasm/fmt` | reemplazo de `fmt`/`errors`/`strings` |
+| `github.com/webtyp/layout/landing` | la plantilla de salida |
+| `github.com/webtyp/html` | `Page`, `DocumentOptions` (incluye el campo `JSONLD`) |
+| `github.com/webtyp/fmt` | reemplazo de `fmt`/`errors`/`strings` |

@@ -1,9 +1,9 @@
 package sitetheme
 
 import (
-	"github.com/tinywasm/fmt"
-	"github.com/tinywasm/html"
-	"github.com/tinywasm/layout/landing"
+	"webtyp.com/fmt"
+	"webtyp.com/html"
+	"webtyp.com/layout/landing"
 	"github.com/veltylabs/site_content"
 )
 

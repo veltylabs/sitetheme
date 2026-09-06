@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/tinywasm/fmt"
-	"github.com/tinywasm/image"
+	"webtyp.com/fmt"
+	"webtyp.com/image"
 	"github.com/veltylabs/site_content"
 	"github.com/veltylabs/sitetheme"
 )

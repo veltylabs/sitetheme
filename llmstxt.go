@@ -1,7 +1,7 @@
 package sitetheme
 
 import (
-	"github.com/tinywasm/fmt"
+	"webtyp.com/fmt"
 	"github.com/veltylabs/site_content"
 )
 

@@ -1,7 +1,7 @@
 # sitetheme
 <img src="docs/img/badges.svg">
 
-Mapea el contenido editable (`veltylabs/site_content`) a la plantilla de aterrizaje (`github.com/tinywasm/layout/landing`), generando artefactos de SEO (`JSON-LD`) y resúmenes para IA (`llms.txt`).
+Mapea el contenido editable (`veltylabs/site_content`) a la plantilla de aterrizaje (`github.com/webtyp/layout/landing`), generando artefactos de SEO (`JSON-LD`) y resúmenes para IA (`llms.txt`).
 
 ## Inicio Rápido
 
