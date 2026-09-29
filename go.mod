@@ -20,7 +20,7 @@ require (
 	webtyp.com/fetch v0.1.28 // indirect
 	webtyp.com/font v0.0.5 // indirect
 	webtyp.com/input v0.0.6 // indirect
-	webtyp.com/js v0.0.10 // indirect
+	webtyp.com/js v0.0.11 // indirect
 	webtyp.com/json v0.5.25 // indirect
 	webtyp.com/model v0.1.9 // indirect
 	webtyp.com/orm v0.12.1 // indirect
