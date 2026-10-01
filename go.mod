@@ -19,7 +19,7 @@ require (
 	webtyp.com/dom v0.13.17 // indirect
 	webtyp.com/font v0.0.5 // indirect
 	webtyp.com/input v0.0.6 // indirect
-	webtyp.com/js v0.1.0 // indirect
+	webtyp.com/js v0.1.1 // indirect
 	webtyp.com/json v0.5.27 // indirect
 	webtyp.com/model v0.1.9 // indirect
 	webtyp.com/orm v0.12.1 // indirect
