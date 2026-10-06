@@ -14,7 +14,7 @@ require (
 	webtyp.com/color v0.1.2 // indirect
 	webtyp.com/components v0.6.16 // indirect
 	webtyp.com/context v0.0.23 // indirect
-	webtyp.com/css v0.4.27 // indirect
+	webtyp.com/css v0.4.28 // indirect
 	webtyp.com/ddl v0.0.15 // indirect
 	webtyp.com/dom v0.13.20 // indirect
 	webtyp.com/font v0.0.5 // indirect
@@ -26,5 +26,5 @@ require (
 	webtyp.com/router v0.1.31 // indirect
 	webtyp.com/storage v0.0.7 // indirect
 	webtyp.com/svg v0.3.5 // indirect
-	webtyp.com/widget v0.6.34 // indirect
+	webtyp.com/widget v0.6.36 // indirect
 )
