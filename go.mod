@@ -6,7 +6,7 @@ require (
 	github.com/veltylabs/site_content v0.2.4
 	webtyp.com/fmt v1.0.0
 	webtyp.com/html v0.0.21
-	webtyp.com/image v0.1.11
+	webtyp.com/image v0.1.16
 	webtyp.com/layout v0.2.16
 )
 
