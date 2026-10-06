@@ -1,6 +1,6 @@
 module github.com/veltylabs/sitetheme
 
-go 1.25.2
+go 1.26.8
 
 require (
 	github.com/veltylabs/site_content v0.2.4
@@ -16,7 +16,8 @@ require (
 	webtyp.com/context v0.0.23 // indirect
 	webtyp.com/css v0.4.28 // indirect
 	webtyp.com/ddl v0.0.15 // indirect
-	webtyp.com/dom v0.13.20 // indirect
+	webtyp.com/dom v0.13.21 // indirect
+	webtyp.com/escape v0.1.0 // indirect
 	webtyp.com/font v0.0.5 // indirect
 	webtyp.com/input v0.0.6 // indirect
 	webtyp.com/js v0.1.1 // indirect
