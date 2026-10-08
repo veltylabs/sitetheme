@@ -16,7 +16,7 @@ require (
 	webtyp.com/context v0.0.23 // indirect
 	webtyp.com/css v0.4.29 // indirect
 	webtyp.com/ddl v0.0.15 // indirect
-	webtyp.com/dom v0.13.21 // indirect
+	webtyp.com/dom v0.13.22 // indirect
 	webtyp.com/escape v0.1.0 // indirect
 	webtyp.com/font v0.0.5 // indirect
 	webtyp.com/input v0.0.18 // indirect
