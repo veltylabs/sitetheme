@@ -36,7 +36,7 @@ segunda plantilla se agrega aquí, sin tocar el panel ni la base.
 |---|---|
 | **No entra al Worker** | Nada de este repositorio se importa desde `edge/` de `misitio`. Arrastra el kit de UI entero y el Worker tiene un límite duro de 1 MB. |
 | **Compila para wasm** | El panel lo usa en el navegador, así que `landing.go` y equivalentes **no** llevan `//go:build !wasm`. Sólo CSS/SVG/JS/HTML pesado va en archivos `!wasm`. |
-| **Sin stdlib pesada** | `tinywasm/fmt` en vez de `fmt`/`errors`/`strings`/`strconv`. Sin `encoding/json`, sin `reflect`. |
+| **Sin stdlib pesada** | `webtyp/fmt` en vez de `fmt`/`errors`/`strings`/`strconv`. Sin `encoding/json`, sin `reflect`. |
 | **Sin mapas en el camino wasm** | Slices + búsqueda lineal. Los conjuntos son chicos. |
 | **Sin estado** | Las funciones son puras: mismo contenido, mismos bytes. Un tema con estado hace que la vista previa y el build difieran. |
 | **Sin `internal/`** | Señal de fork o duplicado de una dependencia en vez de contribuir aguas arriba. |
