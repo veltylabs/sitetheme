@@ -5,7 +5,7 @@ go 1.26.8
 require (
 	github.com/veltylabs/site_content v0.2.15
 	webtyp.com/fmt v1.0.0
-	webtyp.com/html v0.0.21
+	webtyp.com/html v0.0.27
 	webtyp.com/image v0.1.16
 	webtyp.com/layout v0.2.16
 )
