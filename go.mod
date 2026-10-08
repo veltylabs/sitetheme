@@ -3,7 +3,7 @@ module github.com/veltylabs/sitetheme
 go 1.26.8
 
 require (
-	github.com/veltylabs/site_content v0.2.4
+	github.com/veltylabs/site_content v0.2.15
 	webtyp.com/fmt v1.0.0
 	webtyp.com/html v0.0.21
 	webtyp.com/image v0.1.16
