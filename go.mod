@@ -3,7 +3,7 @@ module github.com/veltylabs/sitetheme
 go 1.26.8
 
 require (
-	github.com/veltylabs/site_content v0.2.15
+	github.com/veltylabs/site_content v0.2.21
 	webtyp.com/fmt v1.0.0
 	webtyp.com/html v0.0.27
 	webtyp.com/image v0.1.16
@@ -25,7 +25,7 @@ require (
 	webtyp.com/lang v0.1.6 // indirect
 	webtyp.com/model v0.2.3 // indirect
 	webtyp.com/orm v0.12.8 // indirect
-	webtyp.com/router v0.1.31 // indirect
+	webtyp.com/router v0.4.3 // indirect
 	webtyp.com/storage v0.1.4 // indirect
 	webtyp.com/svg v0.3.5 // indirect
 	webtyp.com/widget v0.6.36 // indirect
