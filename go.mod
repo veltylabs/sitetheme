@@ -7,12 +7,12 @@ require (
 	webtyp.com/fmt v1.0.0
 	webtyp.com/html v0.0.27
 	webtyp.com/image v0.1.16
-	webtyp.com/layout v0.2.16
+	webtyp.com/layout v0.3.50
 )
 
 require (
 	webtyp.com/color v0.1.2 // indirect
-	webtyp.com/components v0.6.16 // indirect
+	webtyp.com/components v0.8.30 // indirect
 	webtyp.com/context v0.0.23 // indirect
 	webtyp.com/css v0.4.30 // indirect
 	webtyp.com/ddl v0.0.15 // indirect
@@ -27,6 +27,6 @@ require (
 	webtyp.com/orm v0.12.8 // indirect
 	webtyp.com/router v0.4.3 // indirect
 	webtyp.com/storage v0.1.4 // indirect
-	webtyp.com/svg v0.3.5 // indirect
-	webtyp.com/widget v0.6.36 // indirect
+	webtyp.com/svg v0.3.14 // indirect
+	webtyp.com/widget v0.6.41 // indirect
 )
