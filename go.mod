@@ -28,5 +28,5 @@ require (
 	webtyp.com/router v0.4.3 // indirect
 	webtyp.com/storage v0.1.4 // indirect
 	webtyp.com/svg v0.3.28 // indirect
-	webtyp.com/widget v0.6.41 // indirect
+	webtyp.com/widget v0.6.42 // indirect
 )
