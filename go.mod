@@ -25,7 +25,7 @@ require (
 	webtyp.com/lang v0.1.7 // indirect
 	webtyp.com/model v0.2.4 // indirect
 	webtyp.com/orm v0.12.8 // indirect
-	webtyp.com/router v0.4.3 // indirect
+	webtyp.com/router v0.4.5 // indirect
 	webtyp.com/storage v0.1.8 // indirect
 	webtyp.com/svg v0.3.30 // indirect
 	webtyp.com/widget v0.6.44 // indirect
