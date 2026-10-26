@@ -7,7 +7,7 @@ require (
 	webtyp.com/fmt v1.0.0
 	webtyp.com/html v0.0.30
 	webtyp.com/image v0.1.16
-	webtyp.com/layout v0.3.75
+	webtyp.com/layout v0.3.76
 )
 
 require (
@@ -25,7 +25,7 @@ require (
 	webtyp.com/lang v0.1.10 // indirect
 	webtyp.com/model v0.2.6 // indirect
 	webtyp.com/orm v0.12.8 // indirect
-	webtyp.com/router v0.4.6 // indirect
+	webtyp.com/router v0.4.8 // indirect
 	webtyp.com/storage v0.1.8 // indirect
 	webtyp.com/svg v0.3.30 // indirect
 	webtyp.com/widget v0.6.44 // indirect
