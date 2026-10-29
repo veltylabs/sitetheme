@@ -7,14 +7,14 @@ require (
 	webtyp.com/fmt v1.0.0
 	webtyp.com/html v0.0.30
 	webtyp.com/image v0.1.16
-	webtyp.com/layout v0.3.83
+	webtyp.com/layout v0.3.85
 )
 
 require (
 	webtyp.com/color v0.1.2 // indirect
 	webtyp.com/components v0.8.57 // indirect
 	webtyp.com/context v0.0.23 // indirect
-	webtyp.com/css v0.4.30 // indirect
+	webtyp.com/css v0.4.31 // indirect
 	webtyp.com/ddl v0.0.32 // indirect
 	webtyp.com/dom v0.13.29 // indirect
 	webtyp.com/escape v0.1.0 // indirect
