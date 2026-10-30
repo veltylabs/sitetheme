@@ -7,7 +7,7 @@ require (
 	webtyp.com/fmt v1.0.0
 	webtyp.com/html v0.0.30
 	webtyp.com/image v0.1.16
-	webtyp.com/layout v0.3.87
+	webtyp.com/layout v0.3.95
 )
 
 require (
