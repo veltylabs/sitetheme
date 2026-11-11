@@ -18,7 +18,7 @@ require (
 	webtyp.com/ddl v0.0.46 // indirect
 	webtyp.com/dom v0.13.29 // indirect
 	webtyp.com/escape v0.1.0 // indirect
-	webtyp.com/filetype v0.0.6 // indirect
+	webtyp.com/filetype v0.1.0 // indirect
 	webtyp.com/font v0.0.5 // indirect
 	webtyp.com/input v0.1.0 // indirect
 	webtyp.com/js v0.1.3 // indirect
