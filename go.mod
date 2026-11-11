@@ -20,7 +20,7 @@ require (
 	webtyp.com/escape v0.1.0 // indirect
 	webtyp.com/filetype v0.1.1 // indirect
 	webtyp.com/font v0.0.5 // indirect
-	webtyp.com/input v0.1.0 // indirect
+	webtyp.com/input v0.2.0 // indirect
 	webtyp.com/js v0.1.3 // indirect
 	webtyp.com/json v0.5.40 // indirect
 	webtyp.com/lang v0.1.16 // indirect
