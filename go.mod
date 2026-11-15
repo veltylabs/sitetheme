@@ -4,7 +4,8 @@ go 1.26.8
 
 require (
 	github.com/veltylabs/site_content v0.2.43
-	webtyp.com/fmt v1.0.0
+	webtyp.com/escape v0.1.2
+	webtyp.com/fmt v1.0.2
 	webtyp.com/html v0.0.30
 	webtyp.com/image v0.1.16
 	webtyp.com/layout v0.3.108
@@ -17,7 +18,6 @@ require (
 	webtyp.com/css v0.4.31 // indirect
 	webtyp.com/ddl v0.0.46 // indirect
 	webtyp.com/dom v0.13.29 // indirect
-	webtyp.com/escape v0.1.0 // indirect
 	webtyp.com/filetype v0.1.1 // indirect
 	webtyp.com/font v0.0.5 // indirect
 	webtyp.com/input v0.2.0 // indirect

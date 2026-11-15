@@ -1,14 +1,15 @@
 package sitetheme
 
 import (
-	"webtyp.com/fmt"
 	"github.com/veltylabs/site_content"
+	"webtyp.com/escape"
+	"webtyp.com/fmt"
 )
 
 func jsonString(s string) string {
 	b := fmt.GetConv()
 	b.WriteByte('"')
-	fmt.JSONEscape(s, b)
+	escape.JSON(b, s)
 	b.WriteByte('"')
 	return b.String()
 }
