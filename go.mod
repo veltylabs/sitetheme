@@ -15,12 +15,13 @@ require (
 	webtyp.com/color v0.1.2 // indirect
 	webtyp.com/components v0.8.72 // indirect
 	webtyp.com/context v0.0.23 // indirect
+	webtyp.com/country v0.0.2 // indirect
 	webtyp.com/css v0.4.31 // indirect
 	webtyp.com/ddl v0.0.46 // indirect
 	webtyp.com/dom v0.13.29 // indirect
 	webtyp.com/filetype v0.1.1 // indirect
 	webtyp.com/font v0.0.5 // indirect
-	webtyp.com/input v0.2.0 // indirect
+	webtyp.com/input v0.2.4 // indirect
 	webtyp.com/js v0.1.3 // indirect
 	webtyp.com/json v0.5.40 // indirect
 	webtyp.com/lang v0.1.16 // indirect
