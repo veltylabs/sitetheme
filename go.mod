@@ -13,7 +13,7 @@ require (
 
 require (
 	webtyp.com/color v0.1.2 // indirect
-	webtyp.com/components v0.8.72 // indirect
+	webtyp.com/components v0.8.75 // indirect
 	webtyp.com/context v0.0.23 // indirect
 	webtyp.com/country v0.0.2 // indirect
 	webtyp.com/css v0.4.31 // indirect
