@@ -32,7 +32,7 @@ require (
 	webtyp.com/model v0.2.26 // indirect
 	webtyp.com/msgtype v0.1.2 // indirect
 	webtyp.com/orm v0.12.42 // indirect
-	webtyp.com/router v0.5.8 // indirect
+	webtyp.com/router v0.5.9 // indirect
 	webtyp.com/securityevent v0.0.2 // indirect
 	webtyp.com/storage v0.2.8 // indirect
 	webtyp.com/svg v0.3.43 // indirect
