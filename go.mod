@@ -28,7 +28,7 @@ require (
 	webtyp.com/input v0.2.6 // indirect
 	webtyp.com/js v0.1.3 // indirect
 	webtyp.com/json v0.5.40 // indirect
-	webtyp.com/lang v0.1.20 // indirect
+	webtyp.com/lang v0.1.22 // indirect
 	webtyp.com/model v0.2.26 // indirect
 	webtyp.com/msgtype v0.1.2 // indirect
 	webtyp.com/orm v0.12.42 // indirect
