@@ -37,5 +37,5 @@ require (
 	webtyp.com/storage v0.2.8 // indirect
 	webtyp.com/svg v0.3.43 // indirect
 	webtyp.com/time v0.6.7 // indirect
-	webtyp.com/widget v0.6.50 // indirect
+	webtyp.com/widget v0.6.52 // indirect
 )
