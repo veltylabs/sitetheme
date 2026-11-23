@@ -8,13 +8,13 @@ require (
 	webtyp.com/fmt v1.0.3
 	webtyp.com/html v0.0.30
 	webtyp.com/image v0.1.16
-	webtyp.com/layout v0.3.137
+	webtyp.com/layout v0.3.139
 )
 
 require (
 	webtyp.com/calendar v0.1.0 // indirect
 	webtyp.com/color v0.1.2 // indirect
-	webtyp.com/components v0.8.76 // indirect
+	webtyp.com/components v0.8.79 // indirect
 	webtyp.com/context v0.0.23 // indirect
 	webtyp.com/country v0.0.2 // indirect
 	webtyp.com/crud v0.0.19 // indirect
@@ -29,7 +29,7 @@ require (
 	webtyp.com/js v0.1.3 // indirect
 	webtyp.com/json v0.5.40 // indirect
 	webtyp.com/lang v0.1.22 // indirect
-	webtyp.com/model v0.2.26 // indirect
+	webtyp.com/model v0.2.27 // indirect
 	webtyp.com/msgtype v0.1.2 // indirect
 	webtyp.com/orm v0.12.42 // indirect
 	webtyp.com/router v0.5.9 // indirect
